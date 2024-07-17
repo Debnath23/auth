@@ -1,0 +1,12 @@
+<!-- <p>home works!</p> -->
+<div *ngIf="authService.currentUserSig() === null">
+<a routerLink="/signup">signup</a>
+<a routerLink="/login">login</a>
+</div>
+<p>works</p>
+<div *ngIf="authService.currentUserSig()">
+    {{ authService.currentUserSig()?.username }}
+    <span (click)="logout()">Logout</span>
+</div>
+
+<router-outlet></router-outlet>
