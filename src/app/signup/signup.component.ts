@@ -1,10 +1,15 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserInterface } from '../user.interface';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+
+export const forbiddenNameValidator = (control: AbstractControl) : ValidationErrors | null => {
+  const usernames = ['foo'];
+  return usernames.includes(control.value) ? {forbiddenName: 'This username is not allowed.'} : null;
+}
 
 @Component({
   selector: 'app-signup',
@@ -20,9 +25,9 @@ export class SignupComponent {
   router = inject(Router);
 
   form = this.fb.nonNullable.group({
-    username: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    username: ['', {validators: [Validators.required, Validators.minLength(3), forbiddenNameValidator]}],
+    email: ['', {validators: [Validators.required, Validators.email]}],
+    password: ['', {validators: [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')]}],
   });
 
   onSubmit(): void {

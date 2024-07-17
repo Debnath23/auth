@@ -4,9 +4,10 @@
 <a routerLink="/login">login</a>
 </div>
 <p>works</p>
-<div *ngIf="authService.currentUserSig()">
+<div *ngIf="authService.currentUserSig()" class="flex justify-center items-center lg:mt-[12.5%] mt-[50%]">
     {{ authService.currentUserSig()?.username }}
     <span (click)="logout()">Logout</span>
+    <p>You are successfully logged in!</p>
 </div>
 
 <router-outlet></router-outlet>

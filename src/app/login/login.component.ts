@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   fb = inject(FormBuilder);
@@ -20,19 +20,33 @@ export class LoginComponent {
   router = inject(Router);
 
   form = this.fb.nonNullable.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', { validators: [Validators.required, Validators.email] }],
+    password: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
+          ),
+        ],
+      },
+    ],
   });
 
   onSubmit(): void {
-    this.http.post<{user: UserInterface}>('https://api.realworld.io/api/users/login', {
-      user: this.form.getRawValue()
-    })
-    .subscribe((response) => {
-      console.log('response', response);
-      localStorage.setItem('token', response.user.token);
-      this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/');
-    })
+    this.http
+      .post<{ user: UserInterface }>(
+        'https://api.realworld.io/api/users/login',
+        {
+          user: this.form.getRawValue(),
+        }
+      )
+      .subscribe((response) => {
+        console.log('response', response);
+        localStorage.setItem('token', response.user.token);
+        this.authService.currentUserSig.set(response.user);
+        this.router.navigateByUrl('/');
+      });
   }
-};
+}

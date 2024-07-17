@@ -1,15 +1,89 @@
-<h1>Signup</h1>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div>
-    <input type="text" placeholder="Username" formControlName="username" />
-  </div>
-  <div>
-    <input type="text" placeholder="Email" formControlName="email" />
-  </div>
-  <div>
-    <input type="password" placeholder="Password" formControlName="password" />
-  </div>
-  <div>
-    <button type="submit">Sign Up</button>
-  </div>
-</form>
+<main class="flex justify-center items-center">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="lg:mt-[12.5%] mt-[50%] max-w-sm border border-slate-200 py-6 px-4 lg:mx-0 mx-4 rounded-lg"
+  >
+    <div class="flex flex-col">
+      <label for="username" class="text-md flex justify-center items-center">
+        Username:
+        <input
+          type="text"
+          formControlName="username"
+          class="flex rounded-md py-1 ml-2 text-black"
+        />
+      </label>
+      @if ( form.controls.username.invalid && (form.controls.username.touched ||
+      form.controls.username.dirty) ) { @if
+      (form.controls.username.errors?.["required"]) {
+      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
+        <small>username is required!</small>
+      </div>
+      } @if (form.controls.username.errors?.["minlength"]) {
+      <div
+        class="flex max-w-sm justify-center items-center pt-2 text-center px-4 text-red-500"
+      >
+        <small>username must be at least 3 characters long.</small>
+      </div>
+      } }
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <label for="email" class="text-md flex justify-center items-center">
+        Email:
+        <input
+          type="text"
+          formControlName="email"
+          class="rounded-md py-1 ml-2 text-black"
+        />
+      </label>
+      @if ( form.controls.email.invalid && (form.controls.email.touched ||
+      form.controls.email.dirty) ) { @if
+      (form.controls.email.errors?.["required"]) {
+      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
+        <small>email is required!</small>
+      </div>
+      } @if (form.controls.email.errors?.["email"]) {
+      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
+        <small>invalid email!</small>
+      </div>
+      } }
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <label for="password" class="text-md flex justify-center items-center">
+        Password:
+        <input
+          type="password"
+          formControlName="password"
+          class="flex rounded-md py-1 ml-2 text-black"
+        />
+      </label>
+      @if ( form.controls.password.invalid && (form.controls.password.touched ||
+      form.controls.password.dirty) ) { @if
+      (form.controls.password.errors?.["required"]) {
+      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
+        <small>password is required!</small>
+      </div>
+      } @if (form.controls.password.errors?.["pattern"]) {
+      <div
+        class="flex max-w-sm justify-center items-center pt-2 text-center px-4 text-red-500"
+      >
+        <small
+          >Password must be at least 8 characters long and contain at least one
+          uppercase letter, one lowercase letter, one digit, and one special
+          character.</small
+        >
+      </div>
+      }}
+    </div>
+    <div class="flex justify-center mt-8">
+      <button
+        type="submit"
+        class="bg-green-500 text-white px-6 py-2 rounded-full"
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</main>
