@@ -1,0 +1,35 @@
+
+<!-- <div *ngIf="authService.currentUserSig() === null" class="flex gap-2 justify-center items-center lg:mt-[12.5%] mt-[50%]">
+  <button
+    type="submit"
+    class="bg-orange-500 hover:bg-orange-400 hover:text-black text-white px-6 py-2 rounded-md mr-4"
+  >
+    <a routerLink="/sign-up">signup</a>
+  </button>
+  <button
+    type="submit"
+    class="bg-yellow-500 hover:bg-yellow-400 hover:text-black text-white px-6 py-2 rounded-md"
+  >
+    <a routerLink="/sign-in">login</a>
+  </button>
+</div>
+<div
+  *ngIf="authService.currentUserSig()"
+  class="flex flex-col justify-center items-center lg:mt-[12.5%] mt-[50%]"
+>
+  {{ authService.currentUserSig()?.username }}
+  <p class="text-2xl mb-8">You are successfully logged in!</p>
+  <button
+    type="submit"
+    class="bg-red-500 hover:bg-red-400 hover:text-black text-white px-6 py-2 rounded-md"
+  >
+    <span (click)="logout()">Logout</span>
+  </button>
+</div> -->
+
+
+<app-nav-bar></app-nav-bar>
+<app-footer></app-footer>
+
+
+<router-outlet></router-outlet>
