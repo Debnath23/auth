@@ -1,22 +1,44 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { AbstractControl, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserInterface } from '../user.interface';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
-export const forbiddenNameValidator = (control: AbstractControl) : ValidationErrors | null => {
+export const forbiddenNameValidator = (
+  control: AbstractControl
+): ValidationErrors | null => {
   const usernames = ['foo'];
-  return usernames.includes(control.value) ? {forbiddenName: 'This username is not allowed.'} : null;
-}
+  return usernames.includes(control.value)
+    ? { forbiddenName: 'This username is not allowed.' }
+    : null;
+};
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+  ],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent {
   fb = inject(FormBuilder);
@@ -25,20 +47,40 @@ export class SignupComponent {
   router = inject(Router);
 
   form = this.fb.nonNullable.group({
-    username: ['', {validators: [Validators.required, Validators.minLength(3), forbiddenNameValidator]}],
-    email: ['', {validators: [Validators.required, Validators.email]}],
-    password: ['', {validators: [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')]}],
+    username: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.minLength(3),
+          forbiddenNameValidator,
+        ],
+      },
+    ],
+    email: ['', { validators: [Validators.required, Validators.email] }],
+    password: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
+          ),
+        ],
+      },
+    ],
   });
 
   onSubmit(): void {
-    this.http.post<{user: UserInterface}>('https://api.realworld.io/api/users', {
-      user: this.form.getRawValue()
-    })
-    .subscribe((response) => {
-      console.log('response', response);
-      localStorage.setItem('token', response.user.token);
-      this.authService.currentUserSig.set(response.user);
-      this.router.navigateByUrl('/');
-    })
+    this.http
+      .post<{ user: UserInterface }>('https://api.realworld.io/api/users', {
+        user: this.form.getRawValue(),
+      })
+      .subscribe((response) => {
+        console.log('response', response);
+        localStorage.setItem('token', response.user.token);
+        this.authService.currentUserSig.set(response.user);
+        this.router.navigateByUrl('/');
+      });
   }
 }

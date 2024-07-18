@@ -4,32 +4,34 @@ import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from '../user.interface';
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule ,RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet, RouterLink, NavBarComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
-  authService = inject(AuthService);
-  http = inject(HttpClient);
+export class HomeComponent  {
+  // authService = inject(AuthService); implements OnInit
+  // http = inject(HttpClient);
 
-  ngOnInit(): void {
-    this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
-    .subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.authService.currentUserSig.set(response.user);
-      }, error: () => {
-        this.authService.currentUserSig.set(null);
-      }})
-  }
+  // ngOnInit(): void {
+  //   this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
+  //   .subscribe({
+  //     next: (response) => {
+  //       console.log('response', response);
+  //       this.authService.currentUserSig.set(response.user);
+  //     }, error: () => {
+  //       this.authService.currentUserSig.set(null);
+  //     }})
+  // }
 
-  logout(){
-    console.log("logout");
-    localStorage.setItem('token', '');
-    this.authService.currentUserSig.set(null);
-  }
+  // logout(){
+  //   console.log("logout");
+  //   localStorage.setItem('token', '');
+  //   this.authService.currentUserSig.set(null);
+  // }
 }

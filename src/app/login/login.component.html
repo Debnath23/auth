@@ -1,65 +1,95 @@
-<main class="flex justify-center items-center">
-  <form
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-    class="lg:mt-[12.5%] mt-[50%] max-w-sm border border-slate-200 py-6 px-4 lg:mx-0 mx-4 rounded-lg"
-  >
-    <div class="flex flex-col mt-4">
-      <label for="email" class="text-md flex justify-center items-center">
-        Email:
+<div
+  class="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black md:mt-[6.25%] mt-[25%]"
+>
+  <h2 class="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+    Welcome to SentientGeeks
+  </h2>
+  <p class="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+    Login to SentientGeeks if you can because we don&apos;t have a login flow
+    yet
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="my-8">
+    <div
+      class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4"
+    ></div>
+    <div class="flex flex-col space-y-2 w-full mb-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Email Address</mat-label>
         <input
-          type="text"
+          matInput
           formControlName="email"
-          class="rounded-md py-1 ml-2 text-black"
+          placeholder="projectmayhem@fc.com"
+          type="email"
         />
-      </label>
-      @if ( form.controls.email.invalid && (form.controls.email.touched ||
-      form.controls.email.dirty) ) { @if
-      (form.controls.email.errors?.["required"]) {
-      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
-        <small>email is required!</small>
-      </div>
-      } @if (form.controls.email.errors?.["email"]) {
-      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
-        <small>invalid email!</small>
-      </div>
-      } }
+      </mat-form-field>
+    </div>
+    <div class="flex flex-col space-y-2 w-full mb-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          placeholder="••••••••"
+          type="password"
+        />
+      </mat-form-field>
     </div>
 
-    <div class="flex flex-col mt-4">
-      <label for="password" class="text-md flex justify-center items-center">
-        Password:
-        <input
-          type="password"
-          formControlName="password"
-          class="flex rounded-md py-1 ml-2 text-black"
-        />
-      </label>
-      @if ( form.controls.password.invalid && (form.controls.password.touched ||
-      form.controls.password.dirty) ) { @if
-      (form.controls.password.errors?.["required"]) {
-      <div class="flex max-w-sm justify-center items-center pt-2 text-red-500">
-        <small>password is required!</small>
-      </div>
-      } @if (form.controls.password.errors?.["pattern"]) {
-      <div
-        class="flex max-w-sm justify-center items-center pt-2 text-center px-4 text-red-500"
-      >
-        <small
-          >Password must be at least 8 characters long and contain at least one
-          uppercase letter, one lowercase letter, one digit, and one special
-          character.</small
-        >
-      </div>
-      }}
-    </div>
-    <div class="flex justify-center items-center mt-8">
+    <button
+      mat-raised-button
+      color="primary"
+      class="w-full h-10 font-medium"
+      type="submit"
+    >
+      Sign in &rarr;
+    </button>
+
+    <div class="divider my-8"></div>
+
+    <div class="flex flex-col space-y-4">
       <button
-        type="submit"
-        class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold"
+        mat-raised-button
+        color="default"
+        class="w-full h-10 flex items-center justify-start space-x-2"
       >
-        Sign In
+        <span>GitHub &rarr;</span>
+      </button>
+      <button
+        mat-raised-button
+        color="default"
+        class="w-full h-10 flex items-center justify-start space-x-2"
+      >
+        <span>Google &rarr;</span>
       </button>
     </div>
   </form>
-</main>
+
+  @if ( form.controls.email.invalid && (form.controls.email.touched ||
+  form.controls.email.dirty) ) { @if (form.controls.email.errors?.["required"])
+  {
+  <div class="flex max-w-sm justify-center items-center pt-2 text-slate-200">
+    <p>email is required!</p>
+  </div>
+  } @if (form.controls.email.errors?.["email"]) {
+  <div class="flex max-w-sm justify-center items-center pt-2 text-slate-200">
+    <p>invalid email!</p>
+  </div>
+  } } @if ( form.controls.password.invalid && (form.controls.password.touched ||
+  form.controls.password.dirty) ) { @if
+  (form.controls.password.errors?.["required"]) {
+  <div class="flex max-w-sm justify-center items-center pt-2 text-slate-200">
+    <p>password is required!</p>
+  </div>
+  } @if (form.controls.password.errors?.["pattern"]) {
+  <div
+    class="flex max-w-sm justify-center items-center pt-2 text-center px-4 text-slate-200"
+  >
+    <p>
+      Password must be at least 8 characters long and contain at least one
+      uppercase letter, one lowercase letter, one digit, and one special
+      character.
+    </p>
+  </div>
+  }}
+</div>
