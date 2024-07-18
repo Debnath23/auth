@@ -14,24 +14,24 @@ import { FooterComponent } from "../footer/footer.component";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent  {
-  // authService = inject(AuthService); implements OnInit
-  // http = inject(HttpClient);
+export class HomeComponent implements OnInit {
+  authService = inject(AuthService); 
+  http = inject(HttpClient);
 
-  // ngOnInit(): void {
-  //   this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
-  //   .subscribe({
-  //     next: (response) => {
-  //       console.log('response', response);
-  //       this.authService.currentUserSig.set(response.user);
-  //     }, error: () => {
-  //       this.authService.currentUserSig.set(null);
-  //     }})
-  // }
+  ngOnInit(): void {
+    this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
+    .subscribe({
+      next: (response) => {
+        console.log('response', response);
+        this.authService.currentUserSig.set(response.user);
+      }, error: () => {
+        this.authService.currentUserSig.set(null);
+      }})
+  }
 
-  // logout(){
-  //   console.log("logout");
-  //   localStorage.setItem('token', '');
-  //   this.authService.currentUserSig.set(null);
-  // }
+  logout(){
+    console.log("logout");
+    localStorage.setItem('token', '');
+    this.authService.currentUserSig.set(null);
+  }
 }

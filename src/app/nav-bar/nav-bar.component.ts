@@ -1,48 +1,3 @@
-// import { RouterLink, RouterOutlet } from '@angular/router';
-// import { Component, ViewChild } from '@angular/core';
-// import { IgxNavigationDrawerComponent } from 'igniteui-angular';
-// import {
-//   IgxButtonModule,
-//   IgxIconModule,
-//   IgxNavigationDrawerModule,
-//   IgxRippleModule,
-//   IgxToggleModule,
-// } from 'igniteui-angular';
-
-// @Component({
-//   selector: 'app-nav-bar',
-//   standalone: true,
-//   imports: [
-//     RouterLink,
-//     RouterOutlet,
-//     IgxButtonModule,
-//     IgxIconModule,
-//     IgxNavigationDrawerModule,
-//     IgxRippleModule,
-//     IgxToggleModule,
-//   ],
-//   templateUrl: './nav-bar.component.html',
-//   styleUrl: './nav-bar.component.css',
-// })
-// export class NavBarComponent {
-//   @ViewChild(IgxNavigationDrawerComponent, { static: true })
-//   public drawer: IgxNavigationDrawerComponent;
-
-//   public navItems = [
-//     { name: 'account_circle', text: 'Avatar' },
-//     { name: 'error', text: 'Badge' },
-//     { name: 'group_work', text: 'Button Group' },
-//   ];
-
-//   public selected = 'Avatar';
-
-//   public navigate(item) {
-//     this.selected = item.text;
-//     this.drawer.close();
-//   }
-// }
-
-
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
 import { IgxNavigationDrawerComponent } from 'igniteui-angular';
@@ -53,11 +8,17 @@ import {
   IgxRippleModule,
   IgxToggleModule,
 } from 'igniteui-angular';
+import { AuthService } from '../auth.service';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { UserInterface } from '../user.interface';
+import { inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [
+    CommonModule,
     RouterLink,
     RouterOutlet,
     IgxButtonModule,
@@ -69,20 +30,25 @@ import {
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
-export class NavBarComponent {
-  @ViewChild(IgxNavigationDrawerComponent, { static: true })
-  public drawer!: IgxNavigationDrawerComponent;
+export class NavBarComponent implements OnInit {
+  authService = inject(AuthService); 
+  http = inject(HttpClient);
 
-  public navItems = [
-    { name: 'account_circle', text: 'Avatar' },
-    { name: 'error', text: 'Badge' },
-    { name: 'group_work', text: 'Button Group' },
-  ];
+  ngOnInit(): void {
+    this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
+    .subscribe({
+      next: (response) => {
+        console.log('response', response);
+        this.authService.currentUserSig.set(response.user);
+      }, error: () => {
+        this.authService.currentUserSig.set(null);
+      }})
+  }
 
-  public selected = 'Avatar';
-
-  public navigate(item: { name: string; text: string }) {
-    this.selected = item.text;
-    this.drawer.close();
+  logout(){
+    console.log("logout");
+    localStorage.setItem('token', '');
+    this.authService.currentUserSig.set(null);
   }
 }
+
