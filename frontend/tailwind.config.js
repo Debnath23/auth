@@ -4,8 +4,12 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    // backgroundImage: { bgHero: 'url(https://sentientgeeks.com/images/banner/mobile-ban3.webp)'},
-    extend: {},
+
+    extend: {
+      fontFamily: {
+        'popins': '["Poppins", sans-serif]'
+      }
+    },
   },
   plugins: [],
 }

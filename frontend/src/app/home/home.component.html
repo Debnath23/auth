@@ -1,55 +1,60 @@
-<!-- 
-<div *ngIf="authService.currentUserSig() === null" class="flex gap-2 justify-center items-center lg:mt-[12.5%] mt-[50%]">
-  <button
-    type="submit"
-    class="bg-orange-500 hover:bg-orange-400 hover:text-black text-white px-6 py-2 rounded-md mr-4"
-  >
-    <a routerLink="/sign-up">signup</a>
-  </button>
-  <button
-    type="submit"
-    class="bg-yellow-500 hover:bg-yellow-400 hover:text-black text-white px-6 py-2 rounded-md"
-  >
-    <a routerLink="/sign-in">login</a>
-  </button>
-</div>
-<div
-  *ngIf="authService.currentUserSig()"
-  class="flex flex-col justify-center items-center lg:mt-[12.5%] mt-[50%]"
->
-  {{ authService.currentUserSig()?.username }}
-  <p class="text-2xl mb-8">You are successfully logged in!</p>
-  <button
-    type="submit"
-    class="bg-red-500 hover:bg-red-400 hover:text-black text-white px-6 py-2 rounded-md"
-  >
-    <span (click)="logout()">Logout</span>
-  </button>
-</div> -->
-
-
 <app-nav-bar></app-nav-bar>
 
-<main class="flex flex-col lg:flex-row bg-[#0E57A5] px-6 lg:px-24 justify-between py-10 lg:py-20 h-auto">
+<main
+  class="flex flex-col lg:flex-row bg-[#0E57A5] px-6 lg:px-24 justify-between py-10 lg:py-20 h-auto"
+>
   <div class="text-slate-200 my-8 lg:my-28 text-center lg:text-left">
     <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">We Build</p>
-    <p class="text-[40px] lg:text-[56px] font-extrabold pb-4 lg:pb-8">SCALABLE</p>
-    <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">Website and Mobile Apps</p>
-    <div class="border-[3px] border-slate-100 w-16 lg:w-24 my-4 mx-auto lg:mx-0"></div>
+
+    <div class="pb-4 lg:pb-8">
+    <p-carousel
+      [value]="['SECURE', 'OPTIMIZED', 'SCALABLE', 'TESTABLE']"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="true"
+      orientation="vertical"
+      verticalViewPortHeight="50px"
+      [showNavigators]="false"
+      [showIndicators]="false"
+      [autoplayInterval]="2000"
+    >
+      <ng-template let-item pTemplate="item">
+        <span class="text-[40px] lg:text-[56px] font-extrabold carousel-item">{{
+          item
+        }}</span></ng-template
+      ></p-carousel
+    >
+  </div>
+
+    <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">
+      Website and Mobile Apps
+    </p>
+    <div
+      class="border-[3px] border-slate-100 w-16 lg:w-24 my-4 mx-auto lg:mx-0"
+    ></div>
     <div class="mt-5 text-[16px] lg:text-[18px] font-normal pb-4 lg:pb-8">
-      <p class="mb-4 lg:mb-12">SentientGeeks provide end-to-end app development for leading</p>
+      <p class="mb-4 lg:mb-12">
+        SentientGeeks provide end-to-end app development for leading
+      </p>
       <p>enterprises and startups worldwide.</p>
     </div>
-    <button class="font-bold text-lg lg:text-2xl text-[#0E57A5] bg-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg hover:text-white hover:bg-[#082647]">
+    <button
+      class="font-bold text-lg lg:text-2xl text-[#0E57A5] bg-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg hover:text-white hover:bg-[#082647]"
+    >
       LET'S CONNECT
     </button>
   </div>
   <div class="pt-10 lg:pt-0 mx-auto">
-    <img src="https://sentientgeeks.com/images/banner/mobile-ban3.webp" alt="mobile-img" class="w-full md:w-auto" width="650" height="550">
+    <img
+      src="https://sentientgeeks.com/images/banner/mobile-ban3.webp"
+      alt="mobile-img"
+      class="w-full md:w-auto"
+      width="650"
+      height="550"
+    />
   </div>
 </main>
 
 <app-footer></app-footer>
-
 
 <router-outlet></router-outlet>

@@ -9,7 +9,7 @@ import {
 import { FormBuilder } from '@angular/forms';
 import { UserInterface } from '../user.interface';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +36,8 @@ export const forbiddenNameValidator = (
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',

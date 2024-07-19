@@ -35,6 +35,10 @@
         />
       </mat-form-field>
     </div>
+    <div class="flex justify-between text-white">
+      <p>Don't have any accout?</p>
+      <a routerLink="/sign-up" class="text-white hover:underline">Signup</a>
+    </div>
 
     <button
       mat-raised-button
@@ -82,7 +86,7 @@
     <p>password is required!</p>
   </div>
   } 
-  <!-- @if (form.controls.password.errors?.["pattern"]) {
+  @if (form.controls.password.errors?.["pattern"]) {
   <div
     class="flex max-w-sm justify-center items-center pt-2 text-center px-4 text-slate-200"
   >
@@ -92,6 +96,8 @@
       character.
     </p>
   </div>
-  } -->
+  }
 }
 </div>
+
+<router-outlet></router-outlet>

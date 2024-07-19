@@ -1,0 +1,15 @@
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 50px;
+    white-space: nowrap;
+  }
+
+  .popins {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  
