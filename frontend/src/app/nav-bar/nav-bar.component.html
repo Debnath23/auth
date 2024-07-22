@@ -1,5 +1,5 @@
 <nav
-  class="flex justify-between items-center lg:px-10 px-4 lg:py-6 py-4 top-0 sticky bg-white"
+  class="flex justify-between items-center lg:px-10 px-4 lg:py-6 py-4 fixed top-0 bg-white z-[800] w-full"
 >
   <a routerLink="/">
     <img
@@ -67,6 +67,7 @@
         LOGOUT
       </button>
     </div>
+
     <!-- <div class="flex lg:hidden items-center">
       <button class="text-[#696969]">
         <svg
@@ -85,7 +86,7 @@
         </svg>
       </button>
     </div> -->
-    <div class="flex lg:hidden items-center">
+    <!-- <div class="flex lg:hidden items-center">
     <p-sidebar #sidebarRef [(visible)]="sidebarVisible2" [style.zIndex]="'-1 !important'" position="right" class="side-bar">
       <a
         routerLink="/"
@@ -120,7 +121,33 @@
       (onClick)="sidebarVisible2 = true"
       icon="pi pi-arrow-right"
     >Button</p-button>
-  </div>
+  </div> -->
+
+
+  <ul
+    (click)="hideSidebar()"
+    class="sidebar backdrop-blur-lg max-sm:w-[50%] hidden fixed top-0 right-0 h-[100vh] w-[250px] z-[999] text-white bg-black/50 flex-col items-start justify-start pt-[30px] backdrop:blur-[10px]"
+  >
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg"
+      height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+      <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+</svg>
+    </li>
+    <li class="h-[50px]">
+      <a class="h-[100%] p-[0_30px] flex items-center" href="#">HOME</a>
+    </li>
+    <li class="h-[50px]">
+      <a class="h-[100%] p-[0_30px] flex items-center" href="#">ABOUT US</a>
+    </li>
+    <li class="h-[50px]">
+      <a class="h-[100%] p-[0_30px] flex items-center" href="#">CAREERS</a>
+    </li>
+    <li class="h-[50px]">
+      <a class="h-[100%] p-[0_30px] flex items-center" href="#">CONTACT US</a>
+    </li>
+  </ul>
   </section>
 </nav>
 

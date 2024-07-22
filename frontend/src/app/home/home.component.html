@@ -1,57 +1,145 @@
 <app-nav-bar></app-nav-bar>
 
-<main
-  class="flex flex-col lg:flex-row bg-[#0E57A5] px-6 lg:px-24 justify-between py-10 lg:py-20 h-auto"
->
-  <div class="text-slate-200 my-8 lg:my-28 text-center lg:text-left">
-    <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">We Build</p>
-
-    <div class="pb-4 lg:pb-8">
-    <p-carousel
-      [value]="['SECURE', 'OPTIMIZED', 'SCALABLE', 'TESTABLE']"
-      [numVisible]="1"
-      [numScroll]="1"
-      [circular]="true"
-      orientation="vertical"
-      verticalViewPortHeight="50px"
-      [showNavigators]="false"
-      [showIndicators]="false"
-      [autoplayInterval]="2000"
-    >
-      <ng-template let-item pTemplate="item">
-        <span class="text-[40px] lg:text-[56px] font-extrabold carousel-item">{{
-          item
-        }}</span></ng-template
-      ></p-carousel
-    >
-  </div>
-
-    <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">
-      Website and Mobile Apps
-    </p>
-    <div
-      class="border-[3px] border-slate-100 w-16 lg:w-24 my-4 mx-auto lg:mx-0"
-    ></div>
-    <div class="mt-5 text-[16px] lg:text-[18px] font-normal pb-4 lg:pb-8">
-      <p class="mb-4 lg:mb-12">
-        SentientGeeks provide end-to-end app development for leading
+<main>
+  <div
+    class="flex flex-col lg:flex-row bg-[#0E57A5] px-6 lg:px-24 justify-between py-36 h-auto"
+  >
+    <div class="text-slate-200 my-8 lg:my-28 text-center lg:text-left">
+      <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">
+        We Build
       </p>
-      <p>enterprises and startups worldwide.</p>
+
+      <div class="pb-4 lg:pb-8 lg:text-left text-center">
+        <p-carousel
+          [value]="['SECURE', 'OPTIMIZED', 'SCALABLE', 'TESTABLE']"
+          [numVisible]="1"
+          [numScroll]="1"
+          [circular]="true"
+          orientation="vertical"
+          verticalViewPortHeight="50px"
+          [showNavigators]="false"
+          [showIndicators]="false"
+          [autoplayInterval]="2000"
+        >
+          <ng-template let-item pTemplate="item">
+            <span
+              class="text-[40px] lg:text-[56px] font-extrabold carousel-item"
+              >{{ item }}</span
+            ></ng-template
+          ></p-carousel
+        >
+      </div>
+
+      <p class="text-[24px] lg:text-[34px] font-medium pb-4 lg:pb-8">
+        Website and Mobile Apps
+      </p>
+      <div
+        class="border-[3px] border-slate-100 w-16 lg:w-24 my-4 mx-auto lg:mx-0"
+      ></div>
+      <div class="mt-5 text-[16px] lg:text-[18px] font-normal pb-4 lg:pb-8">
+        <p class="mb-4 lg:mb-12">
+          SentientGeeks provide end-to-end app development for leading
+        </p>
+        <p>enterprises and startups worldwide.</p>
+      </div>
+      <button
+        class="font-bold text-lg lg:text-2xl text-[#0E57A5] bg-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg hover:text-white hover:bg-[#082647]"
+      >
+        LET'S CONNECT
+      </button>
     </div>
-    <button
-      class="font-bold text-lg lg:text-2xl text-[#0E57A5] bg-white px-6 lg:px-8 py-3 lg:py-4 rounded-lg hover:text-white hover:bg-[#082647]"
-    >
-      LET'S CONNECT
-    </button>
+    <div class="pt-10 lg:pt-0 mx-auto">
+      <img
+        src="https://sentientgeeks.com/images/banner/mobile-ban3.webp"
+        alt="mobile-img"
+        class="w-full md:w-auto"
+        width="650"
+        height="550"
+      />
+    </div>
   </div>
-  <div class="pt-10 lg:pt-0 mx-auto">
+
+  <div
+    class="flex flex-col lg:flex-row justify-between gap-8 lg:gap-24 items-center py-16 lg:py-32 h-auto px-4 lg:px-[60px] bg-white"
+  >
     <img
-      src="https://sentientgeeks.com/images/banner/mobile-ban3.webp"
-      alt="mobile-img"
-      class="w-full md:w-auto"
-      width="650"
-      height="550"
+      src="https://sentientgeeks.com/images/aboutus/about-img3.webp"
+      alt="what-we-do-img"
+      class="w-full max-w-md lg:max-w-lg rounded-lg"
     />
+    <div class="max-lg:text-center">
+      <p class="text-[#0E57A5] text-[24px] lg:text-[36px] font-semibold pb-2">
+        End-To-End Smart <span class="text-[#DD4A48]">Software </span>
+      </p>
+      <p class="text-[24px] lg:text-[36px] font-semibold text-[#DD4A48] pb-10">
+        Development Solution
+      </p>
+
+      <p class="text-start text-[16px] lg:text-[18px] text-[#747078] pb-2">
+        As a certified & accredited software application Development Company, we
+        are focused on helping your business grow by roping in upgraded
+        technologies. We consider facets of your projects, allowing us to
+        identify issues & get them resolved before it takes the entire course.
+      </p>
+      <p class="text-start text-[16px] lg:text-[18px] text-[#747078] pb-2">
+        Our offshore software development company offers the best combination of
+        technology stacks to solve the challenges.
+      </p>
+      <p class="text-start text-[16px] lg:text-[18px] text-[#747078] pb-12">
+        Our robust foothold of seasoned skills, creative ideas & consistency to
+        deliver results with perfection makes us unique. With our innovative
+        strategies & proven technical expertise, our primary goal is to
+        accelerate your business.
+      </p>
+      <a href="#" class="font-bold text-lg md:text-xl text-[#0E57A5] uppercase">
+        Learn More On Us
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="py-16 lg:py-32 h-auto px-4 lg:px-[60px] bg-[#F9FAFB]">
+    <div class="flex flex-col justify-center lg:px-[230px]">
+      <p
+        class="text-[#0E57A5] text-[24px] lg:text-[36px] font-semibold pb-8 text-center"
+      >
+        Why <span class="text-[#DD4A48]">Choose Us</span>
+      </p>
+
+      <p class="text-[16px] lg:text-[18px] text-[#747078] pb-2 text-center">
+        Expand your business with agile & customized IT & software development
+        services. Our team will help you to enhance your business scope & drive
+        proven solutions. We have established applications that are sure to take
+        your business the extra mile.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-8 justify-center py-16">
+      <div
+        *ngFor="let feature of features"
+        class="w-[388px] h-auto flex flex-col items-center border border-[#68aeda] rounded-xl p-[30px] shadow-xl"
+      >
+        <img
+          [src]="feature.img"
+          alt="img"
+          style="padding-top: 12px; padding-bottom: 24px"
+        />
+        <p class="text-[24px] text-[#0e57a5] mb-[15px] font-bold">
+          {{ feature.title }}
+        </p>
+        <p class="text-[18px] text-[#747078] text-center">
+          {{ feature.content }}
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button
+        class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg uppercase"
+      >
+        BOOK AN APPOINTMENT
+      </button>
+    </div>
   </div>
 </main>
 

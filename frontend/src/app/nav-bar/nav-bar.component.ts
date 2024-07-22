@@ -43,7 +43,18 @@ export class NavBarComponent implements OnInit {
   authService = inject(AuthService); 
   http = inject(HttpClient);
 
-  
+  showSidebar(): void {
+    const sidebar = document.querySelector('.sidebar') as HTMLElement;
+    if (sidebar) {
+      sidebar.style.display = 'flex';
+    }
+  }
+  hideSidebar():void {
+    const sidebar = document.querySelector('.sidebar') as HTMLElement;
+    if(sidebar){
+      sidebar.style.display = 'none';
+    }
+  }
 
   ngOnInit(): void {
     // this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')

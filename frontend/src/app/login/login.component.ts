@@ -40,28 +40,28 @@ export class LoginComponent {
       {
         validators: [
           Validators.required,
-          // Validators.pattern(
-          //   '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
-          // ),
+          Validators.pattern(
+            '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
+          ),
         ],
       },
     ],
   });
 
   onSubmit(): void {
-    // this.http
-    //   .post<{ user: UserInterface }>(
-    //     '/sign-in',
-    //     {
-    //       user: this.form.getRawValue(),
-    //     }
-    //   )
-    //   .subscribe((response) => {
-    //     console.log('response', response);
-    //     localStorage.setItem('token', response.user.token);
-    //     this.authService.currentUserSig.set(response.user);
-    //     this.router.navigateByUrl('/');
-    //   });
+    this.http
+      .post<{ user: UserInterface }>(
+        '/sign-in',
+        {
+          user: this.form.getRawValue(),
+        }
+      )
+      .subscribe((response) => {
+        console.log('response', response);
+        localStorage.setItem('token', response.user.token);
+        this.authService.currentUserSig.set(response.user);
+        this.router.navigateByUrl('/');
+      });
 
     axios
       .post<{ user: UserInterface }>('/sign-in')

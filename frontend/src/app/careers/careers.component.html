@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<main class="px-[60px] bg-[#F0F2F5] py-12 h-auto">
-  <div class="flex justify-between bg-[#EBF3FA]">
-    <div class="pt-16">
+<!-- <main class="px-[60px] bg-[#F0F2F5] py-12 h-auto">
+  <div class="flex justify-between bg-[#EBF3FA] gap-4 py-16">
+    <div class="pt-20">
       <div class="">
         <p class="text-[42px] font-normal text-[#0E57A5] pb-8">
           Join Us & Build Up Your Career
@@ -10,12 +10,18 @@
           GRAB YOUR DREAM JOB
         </p>
       </div>
-      <div class="bg-white shadow-lg px-5 py-2.5 flex justify-between items-center rounded-lg">
-        <div class="">
-        <!-- <i class="pi pi-search" style="font-size: 2rem"></i> -->
-        <input type="text" placeholder="Job titles, keywords..." class="outline-none" />
+      <div
+        class="bg-white shadow-lg px-5 py-2.5 flex justify-between items-center rounded-lg w-[810px] mt-10"
+      >
+        <div class="flex gap-2">
+          <i class="fa-solid fa-magnifying-glass text-2xl text-slate-500"></i>
+          <input
+            type="text"
+            placeholder="Job titles, keywords..."
+            class="outline-none"
+          />
         </div>
-        
+
         <button
           class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg uppercase"
         >
@@ -32,5 +38,152 @@
       />
     </div>
   </div>
+  <div class="py-20 flex justify-between">
+    <div class="py-10">
+      <p class="text-[18px] text-[#747078] font-medium">No jobs were found</p>
+    </div>
+    <div class="py-20">
+      <div class="w-[330px] h-auto rounded-lg border border-slate-300 mb-8">
+        <div class="bg-[#c2c2c2] px-2.5 rounded-lg flex items-center pb-2 pt-4">
+          <p class="text-[14px] text-[#000000] font-semibold">Filter By</p>
+        </div>
+
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Fulfilled Positions</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Immediate Hiring</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Remote Positions</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Waitlist Available</p>
+        </div>
+      </div>
+      <div class="w-[330px] h-auto rounded-lg border border-slate-300">
+        <div class="bg-[#c2c2c2] px-2.5 rounded-lg flex items-center pb-2 pt-4">
+          <p class="text-[14px] text-[#000000] font-semibold">Job Category</p>
+        </div>
+
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Content Writing</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Development</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">IT Support</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Management</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Sales / Marketing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main> -->
+
+<main class="px-4 lg:px-[60px] bg-[#F0F2F5] py-36 h-auto">
+  <div class="flex flex-col lg:flex-row justify-between bg-[#EBF3FA] gap-4 py-16">
+    <div class="pt-10 lg:pt-20 lg:w-1/2">
+      <div class="">
+        <p class="text-[28px] lg:text-[42px] font-normal text-[#0E57A5] pb-8">
+          Join Us & Build Up Your Career
+        </p>
+        <p class="text-[28px] lg:text-[42px] text-[#0E57A5] font-black pb-8 uppercase">
+          GRAB YOUR DREAM JOB
+        </p>
+      </div>
+      <div class="bg-white shadow-lg px-5 pt-2.5 pb-2 flex flex-row justify-between items-center rounded-lg w-[382px] lg:w-[810px] mt-10 ">
+        <div class="flex gap-2 w-full lg:w-auto mb-4 lg:mb-0">
+          <i class="fa-solid fa-magnifying-glass text-2xl text-slate-500"></i>
+          <input
+            type="text"
+            placeholder="Job titles, keywords..."
+            class="outline-none w-full lg:w-auto"
+          />
+        </div>
+        <button
+          class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 py-2 px-1 md:px-7 md:py-3 rounded-lg uppercase w-[116px] lg:w-auto"
+        >
+          FIND JOB
+        </button>
+      </div>
+    </div>
+    <div class="lg:w-1/2 flex justify-center lg:justify-end">
+      <img
+        src="https://imgur.com/fGtOYzW.png"
+        alt="contact-us-logo"
+        class="w-full max-w-md lg:w-[690px] lg:h-[389px]"
+      />
+    </div>
+  </div>
+  <div class="py-20 flex flex-col lg:flex-row justify-between">
+    <div class="py-10 lg:py-0">
+      <p class="text-[18px] text-[#747078] font-medium">No jobs were found</p>
+    </div>
+    <div class="py-10 lg:py-0">
+      <div class="w-full lg:w-[330px] h-auto rounded-lg border border-slate-300 mb-8">
+        <div class="bg-[#c2c2c2] px-2.5 rounded-t-lg flex items-center pb-2 pt-4">
+          <p class="text-[14px] text-[#000000] font-semibold">Filter By</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Fulfilled Positions</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Immediate Hiring</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Remote Positions</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Fulfilled Positions" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Waitlist Available</p>
+        </div>
+      </div>
+      <div class="w-full lg:w-[330px] h-auto rounded-lg border border-slate-300">
+        <div class="bg-[#c2c2c2] px-2.5 rounded-t-lg flex items-center pb-2 pt-4">
+          <p class="text-[14px] text-[#000000] font-semibold">Job Category</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Content Writing" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Content Writing</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Development" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Development</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="IT Support" />
+          <p class="text-[16px] text-[#696969] pt-3.5">IT Support</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Management" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Management</p>
+        </div>
+        <div class="flex gap-2 items-center px-4">
+          <input type="checkbox" name="Sales / Marketing" />
+          <p class="text-[16px] text-[#696969] pt-3.5">Sales / Marketing</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
+
+
 <app-footer></app-footer>
