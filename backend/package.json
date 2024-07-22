@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "find_job",
   "version": "1.0.0",
   "description": "A backend for Angular app",
   "type": "module",
