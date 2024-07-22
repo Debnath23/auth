@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   http = inject(HttpClient);
 
   ngOnInit(): void {
-    this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
+    this.http.get<{user: UserInterface}>('https://localhost:4200/current-user')
     .subscribe({
       next: (response) => {
         console.log('response', response);

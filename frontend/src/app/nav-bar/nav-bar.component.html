@@ -1,45 +1,126 @@
-<nav class="flex justify-between items-center lg:px-10 px-4 lg:py-6 py-4 top-0 sticky bg-white">
+<nav
+  class="flex justify-between items-center lg:px-10 px-4 lg:py-6 py-4 top-0 sticky bg-white"
+>
   <a routerLink="/">
-   <img src="https://imgur.com/TPP7K7r.png" alt="logo" width="240" height="90">
+    <img
+      src="https://imgur.com/TPP7K7r.png"
+      alt="logo"
+      width="240"
+      height="90"
+    />
   </a>
   <section class="flex gap-4 md:gap-8">
-    <div class="gap-4 md:gap-6 text-lg md:text-xl justify-center items-center pt-4 text-[#696969] hidden lg:flex">
-      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    <div
+      class="gap-4 md:gap-6 text-lg md:text-xl justify-center items-center pt-4 text-[#696969] hidden lg:flex"
+    >
+      <a
+        routerLink="/"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <p class="hover:text-[#49B1E9]">HOME</p>
       </a>
-      <a routerLink="/about-us" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        routerLink="/about-us"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <p class="hover:text-[#49B1E9]">ABOUT US</p>
       </a>
-      <a routerLink="/contact-us" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        routerLink="/contact-us"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <p class="hover:text-[#49B1E9]">CONTACT US</p>
       </a>
-      <a routerLink="/careers" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        routerLink="/careers"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         <p class="hover:text-[#49B1E9]">CAREERS</p>
       </a>
     </div>
     <div class="hidden lg:flex gap-4">
       <a routerLink="/sign-up">
-        <button *ngIf="authService.currentUserSig() === null" class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg">
+        <button
+          *ngIf="authService.currentUserSig() === null"
+          class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg"
+        >
           SIGN UP
         </button>
       </a>
-        <a routerLink="/sign-in">
-        <button *ngIf="authService.currentUserSig() === null" class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg">
+      <a routerLink="/sign-in">
+        <button
+          *ngIf="authService.currentUserSig() === null"
+          class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg"
+        >
           SIGN IN
         </button>
       </a>
-      <button *ngIf="authService.currentUserSig() !== null" (click)="logout()" class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg">
+      <button
+        *ngIf="authService.currentUserSig() !== null"
+        (click)="logout()"
+        class="font-bold text-lg md:text-xl text-white bg-[#0E57A5] hover:text-[#0E57A5] hover:bg-white hover:border hover:border-slate-800 px-4 py-2 md:px-7 md:py-3 rounded-lg"
+      >
         LOGOUT
       </button>
-      
     </div>
-    <div class="flex lg:hidden items-center">
+    <!-- <div class="flex lg:hidden items-center">
       <button class="text-[#696969]">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5"
+          />
         </svg>
       </button>
-    </div>
+    </div> -->
+    <div class="flex lg:hidden items-center">
+    <p-sidebar #sidebarRef [(visible)]="sidebarVisible2" [style.zIndex]="'-1 !important'" position="right" class="side-bar">
+      <a
+        routerLink="/"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p class="hover:text-[#49B1E9]">HOME</p>
+      </a>
+      <a
+        routerLink="/about-us"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p class="hover:text-[#49B1E9]">ABOUT US</p>
+      </a>
+      <a
+        routerLink="/contact-us"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p class="hover:text-[#49B1E9]">CONTACT US</p>
+      </a>
+      <a
+        routerLink="/careers"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p class="hover:text-[#49B1E9]">CAREERS</p>
+      </a>
+    </p-sidebar>
+    <p-button
+      (onClick)="sidebarVisible2 = true"
+      icon="pi pi-arrow-right"
+    >Button</p-button>
+  </div>
   </section>
 </nav>
 

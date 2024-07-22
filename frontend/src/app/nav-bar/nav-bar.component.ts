@@ -14,6 +14,9 @@ import { HttpClient } from '@angular/common/http';
 import { UserInterface } from '../user.interface';
 import { inject, OnInit } from '@angular/core';
 import { request } from 'http';
+import axios from 'axios';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-nav-bar',
@@ -27,25 +30,33 @@ import { request } from 'http';
     IgxNavigationDrawerModule,
     IgxRippleModule,
     IgxToggleModule,
-    RouterLinkActive
+    RouterLinkActive,
+    SidebarModule,
+    ButtonModule,
   ],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
+  sidebarVisible2: boolean = false;
 
   authService = inject(AuthService); 
   http = inject(HttpClient);
 
+  
+
   ngOnInit(): void {
-    this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
-    .subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.authService.currentUserSig.set(response.user);
-      }, error: () => {
-        this.authService.currentUserSig.set(null);
-      }})
+    // this.http.get<{user: UserInterface}>('https://api.realworld.io/api/user')
+    // .subscribe({
+    //   next: (response) => {
+    //     console.log('response', response);
+    //     this.authService.currentUserSig.set(response.user);
+    //   }, error: () => {
+    //     this.authService.currentUserSig.set(null);
+    //   }})
+    const res = axios.post<{user: UserInterface}>('/current-user');
+    console.log(res);
+    
   }
 
   logout(){

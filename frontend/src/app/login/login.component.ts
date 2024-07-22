@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import axios from 'axios';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatIconModule,
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -48,18 +49,25 @@ export class LoginComponent {
   });
 
   onSubmit(): void {
-    this.http
-      .post<{ user: UserInterface }>(
-        'https://api.realworld.io/api/users/login',
-        {
-          user: this.form.getRawValue(),
-        }
-      )
-      .subscribe((response) => {
-        console.log('response', response);
-        localStorage.setItem('token', response.user.token);
-        this.authService.currentUserSig.set(response.user);
-        this.router.navigateByUrl('/');
+    // this.http
+    //   .post<{ user: UserInterface }>(
+    //     '/sign-in',
+    //     {
+    //       user: this.form.getRawValue(),
+    //     }
+    //   )
+    //   .subscribe((response) => {
+    //     console.log('response', response);
+    //     localStorage.setItem('token', response.user.token);
+    //     this.authService.currentUserSig.set(response.user);
+    //     this.router.navigateByUrl('/');
+    //   });
+
+    axios
+      .post<{ user: UserInterface }>('/sign-in')
+      .then(() => this.router.navigateByUrl('/'))
+      .catch((error) => {
+        console.log(error);
       });
   }
 }

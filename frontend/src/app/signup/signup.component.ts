@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import axios from 'axios';
 
 export const forbiddenNameValidator = (
   control: AbstractControl
@@ -65,24 +66,30 @@ export class SignupComponent {
       {
         validators: [
           Validators.required,
-          Validators.pattern(
-            '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
-          ),
+          // Validators.pattern(
+          //   '^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$'
+          // ),
         ],
       },
     ],
   });
 
-  onSubmit(): void {
-    this.http
-      .post<{ user: UserInterface }>('https://api.realworld.io/api/users', {
-        user: this.form.getRawValue(),
-      })
-      .subscribe((response) => {
-        console.log('response', response);
-        localStorage.setItem('token', response.user.token);
-        this.authService.currentUserSig.set(response.user);
-        this.router.navigateByUrl('/');
+  async onSubmit() {
+    // this.http
+    //   .post<{ user: UserInterface }>('/sign-in', {
+    //     user: this.form.getRawValue(),
+    //   })
+    //   .subscribe((response) => {
+    //     console.log('response', response);
+    //     // localStorage.setItem('token', response.user.token);
+    //     // this.authService.currentUserSig.set(response.user);
+    //     this.router.navigateByUrl('/');
+    //   });
+    await axios
+      .post<{ user: UserInterface }>('/sign-in')
+      .then(() => this.router.navigateByUrl('/'))
+      .catch((error) => {
+        console.log(error);
       });
   }
 }

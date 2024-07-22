@@ -1,3 +1,11 @@
 .active-link p {
-    color: #49B1E9;
+    color: #0E57A5;
   }
+
+  /* ::ng-deep .p-sidebar {
+    z-index: -1 !important;
+  }
+  
+  .side-bar {
+    z-index: -1 !important;
+  } */
