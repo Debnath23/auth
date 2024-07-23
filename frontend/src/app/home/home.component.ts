@@ -7,7 +7,6 @@ import { UserInterface } from '../user.interface';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { FooterComponent } from "../footer/footer.component";
 import { CarouselModule } from 'primeng/carousel';
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -15,7 +14,7 @@ import { CarouselModule } from 'primeng/carousel';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
   features = [
     {
       id: 1,
@@ -58,16 +57,16 @@ export class HomeComponent implements OnInit {
   authService = inject(AuthService); 
   http = inject(HttpClient);
 
-  ngOnInit(): void {
-    this.http.get<{user: UserInterface}>('https://localhost:4200/current-user')
-    .subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.authService.currentUserSig.set(response.user);
-      }, error: () => {
-        this.authService.currentUserSig.set(null);
-      }})
-  }
+  // ngOnInit(): void {
+  //   this.http.get<{user: UserInterface}>(`${API_URL}/current-user`)
+  //   .subscribe({
+  //     next: (response) => {
+  //       console.log('response', response);
+  //       this.authService.currentUserSig.set(response.user);
+  //     }, error: () => {
+  //       this.authService.currentUserSig.set(null);
+  //     }})
+  // }
 
   logout(){
     console.log("logout");

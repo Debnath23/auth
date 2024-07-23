@@ -1,30 +1,17 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import {
-  AbstractControl,
   ReactiveFormsModule,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserInterface } from '../user.interface';
-import { AuthService } from '../auth.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import axios from 'axios';
-
-export const forbiddenNameValidator = (
-  control: AbstractControl
-): ValidationErrors | null => {
-  const usernames = ['foo'];
-  return usernames.includes(control.value)
-    ? { forbiddenName: 'This username is not allowed.' }
-    : null;
-};
+import { BaseService } from '../base-service.service';
 
 @Component({
   selector: 'app-signup',
@@ -32,7 +19,6 @@ export const forbiddenNameValidator = (
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
@@ -43,10 +29,10 @@ export const forbiddenNameValidator = (
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
+
 export class SignupComponent {
+  constructor(private baseServe:BaseService) {}
   fb = inject(FormBuilder);
-  http = inject(HttpClient);
-  authService = inject(AuthService);
   router = inject(Router);
 
   form = this.fb.nonNullable.group({
@@ -56,7 +42,6 @@ export class SignupComponent {
         validators: [
           Validators.required,
           Validators.minLength(3),
-          forbiddenNameValidator,
         ],
       },
     ],
@@ -74,22 +59,15 @@ export class SignupComponent {
     ],
   });
 
-  async onSubmit() {
-    // this.http
-    //   .post<{ user: UserInterface }>('/sign-in', {
-    //     user: this.form.getRawValue(),
-    //   })
-    //   .subscribe((response) => {
-    //     console.log('response', response);
-    //     // localStorage.setItem('token', response.user.token);
-    //     // this.authService.currentUserSig.set(response.user);
-    //     this.router.navigateByUrl('/');
-    //   });
-    await axios
-      .post<{ user: UserInterface }>('/sign-in')
-      .then(() => this.router.navigateByUrl('/'))
-      .catch((error) => {
-        console.log(error);
-      });
+  signUp(userData: UserInterface) {
+    this.baseServe.registerUser(userData.username, userData.email, userData.password);
+    this.router.navigateByUrl('/');
   }
+  onSubmit() {
+    if (this.form.valid) {
+      const userData = this.form.getRawValue() as UserInterface;
+      this.signUp(userData);
+    }
+  }
+
 }
