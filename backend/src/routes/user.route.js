@@ -8,6 +8,8 @@ import {
   registerUser,
 } from "../controllers/user.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
+import { upload } from "../middlewares/multer.middlewares.js";
+import { appliedJob } from "../controllers/applyForJob.controllers.js";
 
 const router = Router();
 
@@ -22,5 +24,15 @@ router.route("/sign-out").post(verifyJWT, logoutUser);
 router.route("/refresh-token").get(refreshAccessToken);
 router.route("/change-password").post(verifyJWT, changeCurrentPassword);
 router.route("/current-user").get(verifyJWT, getCurrentUser);
+router.route("/careers").post(
+  // verifyJWT,
+  upload.fields([
+    {
+      name: "attachments",
+      maxCount: 1,
+    },
+  ]),
+  appliedJob
+);
 
 export default router;

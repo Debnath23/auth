@@ -23,6 +23,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    applyFor: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "applyForJob",
+      },
+    ],
     refreshToken: {
       type: String,
     },
